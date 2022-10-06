@@ -393,7 +393,8 @@ export type RenderButtonProps = {|
     applePaySupport : boolean,
     supportsPopups : boolean,
     supportedNativeBrowser : boolean,
-    experience : string
+    experience : string,
+    showPayLabel : boolean
 |};
 
 export type PrerenderDetails = {|
@@ -488,7 +489,8 @@ export type ButtonPropsInputs = {
     applePaySupport : boolean,
     supportsPopups : boolean,
     supportedNativeBrowser : boolean,
-    experience : string
+    experience : string,
+    showPayLabel : boolean
 };
 
 export const DEFAULT_STYLE = {
@@ -658,7 +660,8 @@ export function normalizeButtonProps(props : ?ButtonPropsInputs) : RenderButtonP
         applePaySupport = false,
         supportsPopups = false,
         supportedNativeBrowser = false,
-        experience = ''
+        experience = '',
+        showPayLabel
     } = props;
 
     const { country, lang } = locale;
@@ -701,5 +704,5 @@ export function normalizeButtonProps(props : ?ButtonPropsInputs) : RenderButtonP
 
     return { clientID, fundingSource, style, locale, remembered, env, fundingEligibility, platform, clientAccessToken,
         buttonSessionID, commit, sessionID, nonce, components, onShippingChange, onShippingAddressChange, onShippingOptionsChange, personalization, content, wallet, flow,
-        experiment, vault, userIDToken, applePay, applePaySupport, supportsPopups, supportedNativeBrowser, experience };
+        experiment, vault, userIDToken, applePay, applePaySupport, supportsPopups, supportedNativeBrowser, experience, showPayLabel };
 }
