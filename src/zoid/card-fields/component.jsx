@@ -63,14 +63,13 @@ type CardFieldProps = {|
 |};
 
 export type CardFieldComponent = ZoidComponent<CardFieldProps>;
-
 type CardFieldsExports = {|
     submit : () => ZalgoPromise<void>,
-    setAttribute : () => void,
-    removeAttribute : () => void,
-    addClass : () => void,
-    removeClass : () => void,
-    getState : () => Object
+    setAttribute : () => ZalgoPromise<void>,
+    removeAttribute : () => ZalgoPromise<void>,
+    addClass : () => ZalgoPromise<void>,
+    removeClass : () => ZalgoPromise<void>,
+    getState : () => ZalgoPromise<void>
 |};
 
 type CardFieldsChildren = {|
