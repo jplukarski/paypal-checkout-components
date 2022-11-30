@@ -70,7 +70,8 @@ type CardFieldsExports = {|
     removeAttribute : () => ZalgoPromise<void>,
     addClass : () => ZalgoPromise<void>,
     removeClass : () => ZalgoPromise<void>,
-    getState : () => ZalgoPromise<Object>
+    getState : () => ZalgoPromise<Object>,
+    on : () => ZalgoPromise<void>
 |};
 
 type CardFieldsChildren = {|
@@ -354,6 +355,9 @@ export const getCardFieldsComponent : () => CardFieldsComponent = memoize(() : C
             getState: {
                 type: 'function'
             },
+            on: {
+                type: 'function'
+            }
         },
 
         eligible: () => {
