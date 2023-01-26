@@ -88,6 +88,7 @@ type CardFieldsChildren = {|
 |};
 
 const url = () => `${ getPayPalDomain() }${ __PAYPAL_CHECKOUT__.__URI__.__CARD_FIELD__ }`;
+const childrenUrl = () => `${ getPayPalDomain() }${__PAYPAL_CHECKOUT__.__URI__.__CARD_INPUT_FIELD__}`
 
 const prerenderTemplate = ({ props, doc }) => {
     return (
@@ -105,7 +106,7 @@ export const getCardFieldsComponent : () => CardFieldsComponent = memoize(() : C
     const genericCardField = (type) => {
         return create({
             tag: `paypal-card-${ type }-field`,
-            url,
+            url: childrenUrl,
 
             dimensions: {
                 height: '30px',

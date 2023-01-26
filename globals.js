@@ -29,7 +29,10 @@ module.exports = {
             __QRCODE__:         '/smart/qrcode',
             __INSTALLMENTS__:   '/smart/installments',
             __MODAL__:          '/smart/modal',
+            // Smart Button Card Fields
             __CARD_FIELDS__:    '/smart/card-fields',
+            // New Card Fields Component
+            __CARD_INPUT_FIELD__: '/smart/card-input-field',
             __CARD_FIELD__:     '/smart/card-field',
             __WALLET__:         '/smart/wallet',
             __PAYMENT_FIELDS__: '/altpayfields'
