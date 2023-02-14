@@ -25,6 +25,7 @@ import { normalizeButtonStyle, type ButtonProps } from '../../ui/buttons/props';
 import { isFundingEligible } from '../../funding';
 import { EXPERIENCE } from '../../constants';
 import { type InlineXOEligibilityType } from '../../types';
+import { getLogoCDNExperiment } from '../../lib/getLogoCDNExperiment';
 
 import { containerTemplate } from './container';
 import { PrerenderedButtons } from './prerender';
@@ -323,6 +324,12 @@ export const getButtonsComponent : () => ButtonsComponent = memoize(() => {
 
                         if (venmoExperiment) {
                             venmoExperiment.logStart({ [ FPTI_KEY.BUTTON_SESSION_UID ]: props.buttonSessionID });
+                        }
+
+                        const logoCDNExperiment = getLogoCDNExperiment();
+
+                        if (logoCDNExperiment) {
+                          logoCDNExperiment.logStart({ [ FPTI_KEY.BUTTON_SESSION_UID ]: props.buttonSessionID });
                         }
 
                         return value(...args);
@@ -685,15 +692,6 @@ export const getButtonsComponent : () => ButtonsComponent = memoize(() => {
                         onComplete,
                         vault
                     } });
-
-                    const logger = getLogger();
-
-                    logger
-                        .info('isInlineXOEligible props', { props: JSON.stringify(props) })
-                        .info('isInlineXOEligible eligible', { eligible: String(eligible) })
-                        .track({
-                            [ FPTI_KEY.TRANSITION ]: `inline_xo_eligibility_${ String(eligible) }`
-                        }).flush();
 
                     return eligible ? EXPERIENCE.INLINE : '';
                 }
